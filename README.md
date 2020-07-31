@@ -34,13 +34,18 @@ This project is part of the following [course](https://www.udemy.com/course/buil
 
 The following extensions are not required, but they help so much the development experience. So I highly recommend you to install them.
 
-> **Auto Import** by steoates
-> **Auto Rename Tag** by Jun Han
-> **Bracket Pair Colorizer 2** by CoenraadS
-> **EsLint** by Dirk Baeumer
-> **Javascript Debugger (Nightly)** by Microsoft
-> **Material Icon Theme** by Philipp Kief
-> **NPM Instellisense** by Christian Kohler
-> **Prettier-Code Formatter** by Prettier
+> **Auto Import** by steoates.
 
+> **Auto Rename Tag** by Jun Han.
 
+> **Bracket Pair Colorizer 2** by CoenraadS.
+
+> **EsLint** by Dirk Baeumer.
+
+> **Javascript Debugger (Nightly)** by Microsoft.
+
+> **Material Icon Theme** by Philipp Kief.
+
+> **NPM Instellisense** by Christian Kohler.
+
+> **Prettier-Code Formatter** by Prettier.
