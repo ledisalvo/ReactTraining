@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Segment, Header, Form, Button } from 'semantic-ui-react';
-import { cuid } from 'cuid';
+import cuid from 'cuid';
 
-export default function EventForm({ setFormOpen, selectedEvent, createEvent }) {
+export default function EventForm({
+  setFormOpen,
+  selectedEvent,
+  createEvent,
+  updateEvent,
+}) {
   const initialValues = selectedEvent ?? {
     title: '',
     category: '',
@@ -11,19 +16,26 @@ export default function EventForm({ setFormOpen, selectedEvent, createEvent }) {
     venue: '',
     date: '',
   };
-  
+
   const [values, setValues] = useState(initialValues);
-  
+
   function handleFormSubmit() {
-    createEvent({...values, id: cuid, attendees: [], hostPhotoURL: '/assets/user.png', hostedBy: 'Bob'});
+    selectedEvent
+      ? updateEvent({ ...values })
+      : createEvent({
+          ...values,
+          id: cuid(),
+          attendees: [],
+          hostPhotoURL: '/assets/user.png',
+          hostedBy: 'Bob',
+        });
     setFormOpen(false);
   }
 
   function handleInputChange(e) {
-    const {name, value} = e.target;
-    setValues({...values, [name]: value });
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   }
-
 
   return (
     <Segment clearing>
@@ -39,16 +51,16 @@ export default function EventForm({ setFormOpen, selectedEvent, createEvent }) {
           />
         </Form.Field>
         <Form.Field>
-          <input 
+          <input
             type='text'
-            placeholder='Category' 
+            placeholder='Category'
             name='category'
             value={values.category}
-            onChange={(e) => handleInputChange(e)} 
+            onChange={(e) => handleInputChange(e)}
           />
         </Form.Field>
         <Form.Field>
-          <input 
+          <input
             type='text'
             placeholder='Description'
             name='description'
@@ -57,12 +69,12 @@ export default function EventForm({ setFormOpen, selectedEvent, createEvent }) {
           />
         </Form.Field>
         <Form.Field>
-          <input 
+          <input
             type='text'
             placeholder='City'
             name='city'
             value={values.city}
-            onChange={(e) => handleInputChange(e)} 
+            onChange={(e) => handleInputChange(e)}
           />
         </Form.Field>
         <Form.Field>
@@ -71,7 +83,7 @@ export default function EventForm({ setFormOpen, selectedEvent, createEvent }) {
             placeholder='Venue'
             name='venue'
             value={values.venue}
-            onChange={(e) => handleInputChange(e)} 
+            onChange={(e) => handleInputChange(e)}
           />
         </Form.Field>
         <Form.Field>
@@ -80,7 +92,7 @@ export default function EventForm({ setFormOpen, selectedEvent, createEvent }) {
             placeholder='Date'
             name='date'
             value={values.date}
-            onChange={(e) => handleInputChange(e)} 
+            onChange={(e) => handleInputChange(e)}
           />
         </Form.Field>
         <Button type='submit' floated='right' positive content='Submit' />
