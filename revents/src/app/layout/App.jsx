@@ -23,13 +23,20 @@ export default function App() {
 
   return (
     <>
-      <NavBar createEvent={handleCreateEvent} />
-      <Container className='main'>
-        <Route exact path='/' component={HomePage} />
-        <Route exact path='/events' component={EventDashboard} />
-        <Route path='/events/:id' component={EventDetailedPage}/>
-        <Route path='/createEvent' component={EventForm} />
-      </Container>
+      <Route exact path='/' component={HomePage} />
+      <Route
+        path={'/(.+)'}
+        render={() => (
+          <>
+            <NavBar createEvent={handleCreateEvent} />
+            <Container className='main'>
+              <Route exact path='/events' component={EventDashboard} />
+              <Route path='/events/:id' component={EventDetailedPage} />
+              <Route path='/createEvent' component={EventForm} />
+            </Container>
+          </>
+        )}
+      />
     </>
   );
 }
