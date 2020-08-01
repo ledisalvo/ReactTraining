@@ -1,7 +1,7 @@
 import React from 'react';
 import EventListItem from './EventListItem';
 
-export default function EventList({ events, setFormOpen, selectEvent }) {
+export default function EventList({ events, setFormOpen, selectEvent, deleteEvent }) {
   return (
     <>
       {events.map((event) => (
@@ -9,7 +9,7 @@ export default function EventList({ events, setFormOpen, selectEvent }) {
           event={event}
           key={event.id}
           selectEvent={selectEvent}
-          setFormOpen={setFormOpen}
+          deleteEvent={deleteEvent}
         />
       ))}
     </>

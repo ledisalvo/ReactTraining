@@ -15,13 +15,17 @@ export default function EventDashboard({ formOpen, setFormOpen, selectEvent, sel
     setEvents([...events.map(evt => evt.id === updatedEvent.id ? updatedEvent : evt)]);
   }
 
+  function handleDeleteEvent(deletedEvent) {
+    setEvents(events.filter(evt => evt.id !== deletedEvent.id));
+  }
+
   return (
     <Grid>
       <Grid.Column width={10}>
         <EventList
           events={events}
-          setFormOpen={setFormOpen}
           selectEvent={selectEvent}
+          deleteEvent={handleDeleteEvent}
         />
       </Grid.Column>
       <Grid.Column width={6}>
