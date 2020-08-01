@@ -5,13 +5,8 @@ import EventListAttendee from './EventListAttendee';
 export default function EventListItem({
   event,
   selectEvent,
-  setFormOpen,
+  deleteEvent,
 }) {
-  function handleSelectEvent() {
-    selectEvent(event);
-    setFormOpen(true);
-  }
-
   return (
     <Segment.Group>
       <Segment>
@@ -43,7 +38,13 @@ export default function EventListItem({
       <Segment clearing>
         <div>{event.description}</div>
         <Button
-          onClick={() => handleSelectEvent()}
+          onClick={() => deleteEvent(event)}
+          color='red'
+          floated='right'
+          content='Delete'
+        />
+        <Button
+          onClick={() => selectEvent(event)}
           color='teal'
           floated='right'
           content='View'
