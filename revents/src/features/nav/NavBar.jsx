@@ -1,6 +1,8 @@
 import React from 'react';
 import { Menu, Container, Button } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import SignedOutMenu from './SignedOutMenu';
+import SignedInMenu from './SignedInMenu';
 
 export default function NavBar({createEvent}) {
     return (
@@ -14,13 +16,9 @@ export default function NavBar({createEvent}) {
                 <Menu.Item as={NavLink} to='/createEvent'>
                     <Button positive inverted content="Create Event"/>
                 </Menu.Item>
-                <Menu.Item position="right">
-                    <Button basic inverted content="Login"/>
-                    <Button basic inverted content="Register" style={{marginLeft: '0.5em'}}/>
-                </Menu.Item>
-                <Menu name="Events" />
+                <SignedOutMenu />
+                <SignedInMenu />
             </Container>
-
         </Menu>
     );
 }
